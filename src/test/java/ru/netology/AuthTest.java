@@ -11,10 +11,7 @@ import java.time.Duration;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.Wait;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.url;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AuthTest {
 
@@ -36,10 +33,10 @@ public class AuthTest {
 
         login(user.getLogin(), user.getPassword());
 
-        Wait().withTimeout(Duration.ofSeconds(10)).until(webDriver -> url().contains("/dashboard"));
-
-        assertTrue(url().contains("/dashboard"));
-    }
+        $("[test-data-id='dashboard']")
+                .shouldBe(visible, Duration.ofSeconds(10))
+                .shouldHave(text("Личный кабинет"));
+}
 
     @Test
     void shouldShowErrorForBlockedUser() {
