@@ -8,7 +8,7 @@ import ru.netology.data.RegistrationDto;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -34,7 +34,7 @@ public class AuthTest {
 
         login(user.getLogin(), user.getPassword());
 
-        $(byText("\u00A0 Личный кабинет")).shouldBe(visible, Duration.ofSeconds(10));
+        $(withText("Личный кабинет")).shouldBe(visible, Duration.ofSeconds(10));
     }
 
     @Test
