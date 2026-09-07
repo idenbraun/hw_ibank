@@ -36,7 +36,7 @@ public class AuthTest {
         $("[test-data-id='dashboard']")
                 .shouldBe(visible, Duration.ofSeconds(10))
                 .shouldHave(text("Личный кабинет"));
-}
+    }
 
     @Test
     void shouldShowErrorForBlockedUser() {
